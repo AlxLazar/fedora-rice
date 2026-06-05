@@ -1,8 +1,7 @@
 name: bluebuild
 on:
   schedule:
-    - cron:
-        "00 06 * * *"
+    - cron: "00 06 * * *"
   push:
     paths-ignore:
       - "**.md"
@@ -29,8 +28,7 @@ jobs:
         uses: blue-build/github-action@v1.11
         with:
           recipe: ${{ matrix.recipe }}
-          cosign_private_key: ${{ secrets.SIGNING_SECRET }}
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
           maximize_build_space: true
-          no_sign: true
+          cli_args: "--no-sign"
