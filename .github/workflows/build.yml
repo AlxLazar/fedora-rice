@@ -28,7 +28,8 @@ jobs:
         uses: blue-build/github-action@v1.11
         with:
           recipe: ${{ matrix.recipe }}
+          cosign_private_key: "none"
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
           maximize_build_space: true
-          cli_args: "--no-sign"
+          build_opts: "--no-sign"
